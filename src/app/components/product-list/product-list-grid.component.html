@@ -1,0 +1,88 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <h4>Category: {{ currentCategoryName }}</h4>
+    <hr />
+    <div class="container-fluid">
+      <div class="row">
+        <!-- loop over product collection -->
+        <div *ngFor="let product of products" class="col-md-3">
+          <div class="product-box">
+            <a routerLink="/products/{{ product.id }}">
+              <img
+                src="{{ product.imageUrl }}"
+                class="img-responsive"
+                alt="image of {{ product.name }}"
+              />
+            </a>
+            <a routerLink="/products/{{ product.id }}">
+              <h1>{{ product.name }}</h1>
+            </a>
+            <div class="price">{{ product.unitPrice | currency: "USD" }}</div>
+            <button (click)="addToCart(product)" class="btn btn-primary btn-sm">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+
+        <!-- if no products -->
+        <div
+          *ngIf="products?.length == 0"
+          class="alert alert-warning col-md-12"
+          role="alert"
+        >
+          No products found.
+        </div>
+      </div>
+      <div class="footer-pagination">
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-9" style="padding-left: 30%">
+                <ngb-pagination
+                  [(page)]="page"
+                  [pageSize]="size"
+                  [collectionSize]="totalElements"
+                  [maxSize]="2"
+                  [boundaryLinks]="true"
+                  (pageChange)="listProducts()"
+                >
+                </ngb-pagination>
+              </div>
+              <div class="col-md-3 mt-2" style="text-align: right">
+                <span class="mr-2">Items per page</span>
+                <select (change)="updatePageSize($any($event.target).value)">
+                  <option>5</option>
+                  <option selected="true">10</option>
+                  <option>25</option>
+                  <option>50</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Units in Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td class="align-middle">
+        <img src="{{ product.imageUrl }}" height="50" alt="image of product" />
+      </td>
+      <td class="align-middle">{{ product.name }}</td>
+      <td class="align-middle">{{ product.unitPrice | currency: "USD" }}</td>
+      <td class="align-middle">{{ product.unitsInStock }}</td>
+    </tr>
+  </tbody>
+</table> -->

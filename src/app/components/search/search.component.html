@@ -1,0 +1,13 @@
+<div class="form-header">
+  <input
+    #input
+    class="au-input au-input-xl"
+    type="text"
+    name="search"
+    placeholder="Enter keyword ..."
+    (keyup.enter)="handleSearch(input.value)"
+  />
+  <button class="au-btn-submit" (click)="handleSearch(input.value)">
+    Search
+  </button>
+</div>
