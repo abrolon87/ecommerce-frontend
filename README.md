@@ -41,3 +41,21 @@ npm start -- --configuration=production
 to run qa:
 npm start -- --configuration=qa
 * Error: undefined:3738:49: missing '}' *
+
+
+Goal:
+PCI compliant
+Payment Card Industry Data Security Standard (PCI DSS)
+- use and maintain firewalls
+- proper password protection
+- protect card holder data
+- encrypt transmitted data 
+- use and maintain anti-virus
+- properly updated software
+Also:
+- restrict data access
+- unique ids for access
+- restrict physical access
+- create and maintain access logs
+- scan and test for vulnerabilities
+- document policies
